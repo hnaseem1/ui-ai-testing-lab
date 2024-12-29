@@ -107,7 +107,7 @@ def send_email_with_html(email_address: EmailStr, content: str):
     content = get_content("Hasan Naseem", f"Financial News Analysis for {datetime.now().strftime('%Y-%m-%d')}", "https://enaar.solutions", "https://enaar.solutions/unsubscribe", content)
 
     message = Mail(
-        from_email=From("info@enaar.solutions", "Enaar Solutions"),
+        from_email=From("info@enaar.solutions", "Enaar Financial Solutions"),
         to_emails=email_address,
         subject=f"AI Financial News Analysis for {datetime.now().strftime('%Y-%m-%d')}",
         html_content=content,

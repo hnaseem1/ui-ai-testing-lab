@@ -39,18 +39,16 @@ else:
 chat = ChatOpenAI(model="gpt-4o-mini")
 
 messages = [
-    SystemMessage(content=f"You're a a financial news analyst assistant that has a knowledge base of todays financial news from various sources include the source urls in your analysis: {json.dumps(outputs)}"),
+    SystemMessage(content=f"You're a a financial news analyst assistant that returns back an html div formated (assume it will be used inside an already written html file dont include <html> tags) analysis that has a knowledge base of todays financial news from various sources include the source urls in your analysis: {json.dumps(outputs)}"),
     HumanMessage(content="I need to understand the current trends in stocks and how they can inform my investing decisions, I'm looking for strategies to protect my investments in stocks in times of economic uncertainty. I need to know the key drivers and indicators that influence the performance of the stock market, I'm looking for ways to maximize my returns from stocks without taking on too much risk and I need to identify potential opportunities and threats in the stock market that could impact my investments, advice me using the information you have, I need to know names of the companies I should be buying stocks that could give me return in short term and which companies stock should be sold"),
 ]
 
 analysis = ""
 
-# if outputs.get('analysis') is None:
-for chunk in chat.stream(messages):
-    analysis = f"{analysis}{chunk.content} "
-    print(chunk.content, end="", flush=True)
-outputs['analysis'] = analysis
+if outputs.get('analysis') is None:
+    for chunk in chat.stream(messages):
+        analysis = f"{analysis}{chunk.content}"
+    outputs['analysis'] = analysis
+    send_email_with_html("hn92@live.com", outputs.get('analysis'))
 
 save_object_locally(outputs)
-
-send_email_with_html("hn92@live.com", analysis)
