@@ -1,0 +1,1 @@
+build an agent that can open a webpage, capture the DOM of the website and answer question about it
