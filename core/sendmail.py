@@ -3,7 +3,7 @@ from functools import lru_cache
 import os
 from pydantic import EmailStr
 from sendgrid import SendGridAPIClient
-from sendgrid.helpers.mail import Mail, Attachment, FileContent, FileName, FileType, Disposition, From
+from sendgrid.helpers.mail import Mail, From
 
 def get_content(recipient_name, subject, link, unsubscribe_link, content):
     content = """
