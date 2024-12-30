@@ -20,7 +20,9 @@ using that summary it will give some stocks to buy
 outputs = {}
 
 news_sources = [
-    "https://www.wsj.com/finance",
+    "https://www.nasdaq.com/news-and-insights?page=1&rows_per_page=100",
+    "https://www.google.com/finance/",
+    "https://www.morningstar.com/",
     "https://www.cnbc.com/",
     "https://ca.finance.yahoo.com/",
 ]
